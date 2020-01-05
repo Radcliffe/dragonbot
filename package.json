@@ -20,6 +20,6 @@
     "hubot-zulip": "^0.1.0"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "12.10.x"
   }
 }
