@@ -4,11 +4,11 @@
 # Commands:
 #   hubot karma best [n] - top [n]
 #   hubot karma worst [n] - bottom [n]
-#   hubot contrib
-#   hubot blog
-#   hubot api
-#   hubot respositories
-#   hubot usage
+#   hubot contrib - https://github.com/backdrop-ops/contrib
+#   hubot blog - https://backdropcms.org/news
+#   hubot api - https://api.backdropcms.org/
+#   hubot respositories - https://backdropcms.org/resources/backdrop-cms-github
+#   hubot usage - https://backdropcms.org/project/usage
 #
 # Notes:
 #   They are commented out by default, because most of them are pretty silly and
