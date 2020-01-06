@@ -1,6 +1,15 @@
 # Description:
 #   Example scripts for you to examine and try out.
 #
+# Commands:
+#   hubot karma best [n] - top [n]
+#   hubot karma worst [n] - bottom [n]
+#   hubot contrib
+#   hubot blog
+#   hubot api
+#   hubot respositories
+#   hubot usage
+#
 # Notes:
 #   They are commented out by default, because most of them are pretty silly and
 #   wouldn't be useful and amusing enough for day to day huboting.
@@ -10,8 +19,32 @@
 
 module.exports = (robot) ->
 
-  # robot.hear /badger/i, (res) ->
-  #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+  robot.hear /badger/i, (res) ->
+    res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+
+  robot.respond /contrib/i, (res) ->
+    res.send "https://github.com/backdrop-ops/contrib"
+
+  robot.respond /Blog/i, (res) ->
+    res.send "https://backdropcms.org/news"
+
+  robot.respond /api/i, (res) ->
+    res.send "https://api.backdropcms.org/"
+
+  robot.respond /repositories/i, (res) ->
+    res.send "https://backdropcms.org/resources/backdrop-cms-github"
+
+  robot.hear /code of conduct/i, (res) ->
+    res.send "https://github.com/backdrop-ops/conduct/blob/master/code_of_conduct.md"
+
+  robot.respond /usage/i, (res) ->
+    res.send "https://backdropcms.org/project/usage"
+
+  robot.hear /wordpress/i, (res) ->
+    dice = Math.floor(Math.random() * 15) + 1
+    if dice == 3
+      res.send "Is someone talking about Wordpress again? "
+
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
