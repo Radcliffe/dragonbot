@@ -8,6 +8,6 @@
   "hubot-maps",
   "hubot-redis-brain",
   "hubot-rules",
-  "hubot-plusplus",
+  "hubot-karma-classic",
   "hubot-shipit"
 ]
