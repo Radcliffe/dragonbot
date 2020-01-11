@@ -23,23 +23,8 @@ module.exports = (robot) ->
   robot.hear /badger/i, (res) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
 
-  robot.respond /contrib/i, (res) ->
-    res.send "https://github.com/backdrop-ops/contrib"
-
-  robot.respond /Blog/i, (res) ->
-    res.send "https://backdropcms.org/news"
-
-  robot.respond /api/i, (res) ->
-    res.send "https://api.backdropcms.org/"
-
-  robot.respond /repositories/i, (res) ->
-    res.send "https://backdropcms.org/resources/backdrop-cms-github"
-
   robot.hear /code of conduct/i, (res) ->
     res.send "https://github.com/backdrop-ops/conduct/blob/master/code_of_conduct.md"
-
-  robot.respond /usage/i, (res) ->
-    res.send "https://backdropcms.org/project/usage"
 
   robot.hear /wordpress/i, (res) ->
     dice = Math.floor(Math.random() * 15) + 1
