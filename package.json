@@ -6,6 +6,7 @@
   "description": "A bot for the Backdrop Community on Zulip",
   "dependencies": {
     "hubot": "^3.3.2",
+    "hubot-ambush": "0.0.3",
     "hubot-diagnostics": "^1.0.0",
     "hubot-factoids": "^1.2.0",
     "hubot-google-images": "^0.2.7",
@@ -19,7 +20,6 @@
     "hubot-rules": "^1.0.0",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.1",
-    "hubot-tell": "*",
     "hubot-zulip": "^0.1.0"
   },
   "engines": {
