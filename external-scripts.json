@@ -7,8 +7,6 @@
   "hubot-redis-brain",
   "hubot-factoids",
   "hubot-rules",
-  "hubot-ambush",
   "hubot-karma-classic-enhanced",
-  "hubot-welcome",
   "hubot-shipit"
 ]
