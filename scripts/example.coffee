@@ -9,7 +9,7 @@
 #   hubot api - https://api.backdropcms.org/
 #   hubot respositories - https://backdropcms.org/resources/backdrop-cms-github
 #   hubot usage - https://backdropcms.org/project/usage
-#   [item]++ or [user]++ (no spaces) | Adds karma
+#   [item]++ or [user]++ | Adds karma
 #
 # Notes:
 #   They are commented out by default, because most of them are pretty silly and
