@@ -9,5 +9,6 @@
   "hubot-rules",
   "hubot-ambush",
   "hubot-karma-classic-enhanced",
+  "hubot-welcome",
   "hubot-shipit"
 ]
