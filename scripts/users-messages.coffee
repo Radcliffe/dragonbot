@@ -40,10 +40,11 @@ module.exports = (robot) ->
     myColor = res.match[1]
     colorList = robot.brain.get('colorList') || [];
     colorList.unshift myColor
-    robot.brain.set 'colorList', [colorList]
+    robot.brain.set 'colorList', colorList
     res.send myColor
     res.send colorList
-    res.send mes.message.user.id
+    temp = mes.message.user.id
+    res.send temp
 
 
 
