@@ -129,6 +129,7 @@ module.exports = (robot) ->
 
   robot.respond /member list/i, (mes) ->
     participants = robot.brain.get('bdMembers')
+    mes.send "Here is the list:"
     mes.send participants
   
 
