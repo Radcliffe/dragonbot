@@ -55,6 +55,26 @@ module.exports = (robot) ->
   robot.hear /botsnack/i, (res) ->
     res.send res.random botsnack
 
+  robot.respond /hello|hi|greetings|salutations/i, (res) ->
+    res.send "Hello, how can I be of service?"
+    res.finish()
+
+  robot.hear /hello$|hi$|greetings$|salutations$/i, (res) ->
+    res.send "Hello, how can I help you?"
+    res.finish()
+
+  robot.hear /I like pie/i, (res) ->
+    res.emote "makes a freshly baked pie"
+
+  robot.hear /\bdragon\b|\bdragons\b/i, (res) ->
+    res.emote "Is someone talking about me?"
+
+  robot.catchAll (msg) ->
+    r = new RegExp "^(?:#{robot.alias}|#{robot.name}) (.*)", "i"
+    matches = msg.message.text.match(r)
+    if matches != null && matches.length > 1
+      msg.send 'Sorry, I don\'t understand. Try @Dragonbot help'
+
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
