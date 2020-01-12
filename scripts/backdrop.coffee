@@ -12,11 +12,6 @@
 
 module.exports = (robot) ->
 
-  robot.respond /member list/i, (res) ->
-    participantList = robot.brain.get('bdMembers')
-    res.send "Here is the list:"
-    res.send participantList
-
   robot.hear /badger/i, (res) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
 
@@ -99,31 +94,6 @@ module.exports = (robot) ->
     robot.brain.set 'totalSodas', 0
     res.send 'zzzzz'
     res.finish()
-
-  robot.hear /color (\w+)/i, (res) ->
-    myColor = res.match[1]
-    colorList = robot.brain.get('colorList') || [];
-    colorList.unshift myColor
-    res.send colorList
-    robot.brain.set 'colorList', [colorList]
-
-  robot.hear /admin clear color/i, (res) ->
-    robot.brain.set 'colorList', []
-    res.send "Color list cleared."
-
-  robot.hear /admin clear users/i, (res) ->
-    robot.brain.set 'bdMembers', []
-    res.send "User list cleared."
-    res.finish()
-
-  robot.hear /.*/i, (mes) ->
-    participants = robot.brain.get('bdMembers') || [];
-    if participants
-      if mes.message.user.id not in participants
-        participants.unshift mes.message.user.id
-        robot.brain.set 'bdMembers', participants
-        mes.send "I think this is your first time posting today."
-        mes.send "This is just a short term test feature."
 
 #  robot.listen(
 #    (message) -> # Match function
