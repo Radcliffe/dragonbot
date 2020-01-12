@@ -88,22 +88,22 @@ module.exports = (robot) ->
     else
       res.reply "Opening #{doorColor} #{doorType} doors"
 
-  robot.listen(
-    (message) -> # Match function
+#  robot.listen(
+#    (message) -> # Match function
       # Occassionally respond to things that Steve says
-      message.user.name is "StPaulTim" and Math.random() > 0.8
-    (response) -> # Standard listener callback
+#      message.user.name is "StPaulTim" and Math.random() > 0.8
+#    (response) -> # Standard listener callback
       # Let Steve know how happy you are that he exists
-      response.reply "HI STEVE! YOU'RE MY BEST FRIEND! (but only like #{response.match * 100}% of the time)"
-  )
+#      response.reply "HI STEVE! YOU'RE MY BEST FRIEND! (but only like #{response.match * 100}% of the time)"
+#  )
 
   robot.respond /have a soda/i, (res) ->
     sodasHad = robot.brain.get('totalSodas') * 1 or 0
     if sodasHad > 4
       res.reply "I'm too fizzy.."
-
     else
-      res.reply sodasHad
+      res.reply "How refreshing"
+      res.reply sodasHad  
       robot.brain.set 'totalSodas', sodasHad+1
 
   robot.respond /sleep it off/i, (res) ->
