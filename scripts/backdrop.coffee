@@ -122,7 +122,8 @@ module.exports = (robot) ->
       if mes.message.user.id not in participants
         participants.unshift mes.message.user.id
         robot.brain.set 'bdMembers', participants
-        mes.send "First timer"
+        mes.send "I think this is your first time posting today."
+        mes.send "This is just a short term test feature."
 
 #  robot.listen(
 #    (message) -> # Match function
