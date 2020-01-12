@@ -15,6 +15,11 @@
 
 module.exports = (robot) ->
 
+  robot.respond /member list/i, (res) ->
+    participantList = robot.brain.get('bdMembers')
+    res.send "Here is the list:"
+    res.send participantList
+
   robot.hear /badger/i, (res) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
 
@@ -127,13 +132,7 @@ module.exports = (robot) ->
       else
         mes.finish()
     robot.brain.set 'bdMembers', participants
-
-  robot.respond /member list/i, (res) ->
-    participantList = robot.brain.get('bdMembers')
-    res.send "Here is the list:"
-    res.send participantList
   
-
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
   #   if doorType is "pod bay"
