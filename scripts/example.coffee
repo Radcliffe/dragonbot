@@ -116,7 +116,8 @@ module.exports = (robot) ->
     colorList = robot.brain.get('colorList') || [];
     colorList.unshift myColor
     res.send colorList
-    robot.brain.set 'colorList', []
+    robot.brain.set 'colorList', [colorList]
+    robot.brain.set 'bdMembers', []
 
   robot.hear /.*/i, (mes) ->
     temp2 = []
