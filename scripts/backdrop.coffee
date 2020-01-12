@@ -121,10 +121,8 @@ module.exports = (robot) ->
     if participants
       if mes.message.user.id not in participants
         participants.unshift mes.message.user.id
-      else
-        mes.send "Already a member."
-    robot.brain.set 'bdMembers', participants
-
+        robot.brain.set 'bdMembers', participants
+        mes.send "First timer"
 
 #  robot.listen(
 #    (message) -> # Match function
