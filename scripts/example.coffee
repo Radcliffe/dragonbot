@@ -81,9 +81,22 @@ module.exports = (robot) ->
       msg.send 'Sorry, I don\'t understand. Try @Dragonbot help'
     msg.finish()
 
-  robot.hear /green eggs/i, (res) ->
-    room = "tim"
-    robot.messageRoom room, "I do not like green eggs and ham.  I do not like them sam-I-am."
+  robot.respond /open the (.*) doors/i, (res) ->
+    doorColor = "red"
+    doorType = res.match[1]
+    if doorType is "pod bay"
+      res.reply "I'm afraid I can't let you do that."
+    else
+      res.reply "Opening #{doorColor} #{doorType} doors"
+
+  robot.listen(
+    (message) -> # Match function
+      # Occassionally respond to things that Steve says
+      message.user.name is "stpaultim" and Math.random() > 0.8
+    (response) -> # Standard listener callback
+      # Let Steve know how happy you are that he exists
+      response.reply "HI STEVE! YOU'RE MY BEST FRIEND! (but only like #{response.match * 100}% of the time)"
+  )
 
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
