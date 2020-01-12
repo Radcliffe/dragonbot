@@ -115,9 +115,9 @@ module.exports = (robot) ->
     temp = []
     myColor = res.match[1]
     tempColor = robot.brain.get('colorList')
-#    myColor.push '#{tempColor}'
     temp.push myColor
     temp.push tempColor
+    temp.join " "
     res.send temp
     robot.brain.set 'colorList', temp
 
