@@ -4,11 +4,6 @@
 # Commands:
 #   hubot karma best [n] - top [n]
 #   hubot karma worst [n] - bottom [n]
-#   hubot contrib - https://github.com/backdrop-ops/contrib
-#   hubot blog - https://backdropcms.org/news
-#   hubot api - https://api.backdropcms.org/
-#   hubot respositories - https://backdropcms.org/resources/backdrop-cms-github
-#   hubot usage - https://backdropcms.org/project/usage
 #   [item]++ or [user]++ | Adds karma
 #
 # Notes:
@@ -30,6 +25,10 @@ module.exports = (robot) ->
     dice = Math.floor(Math.random() * 15) + 1
     if dice == 3
       res.send "Is someone talking about Wordpress again? "
+
+#  robot.hear /joomla/i, (res) ->
+#    if Math.random() > 0.9
+#      res.send "Is someone talking about Joomla today? "
 
   botsnack = [
     'Om nom nom', 
@@ -97,6 +96,46 @@ module.exports = (robot) ->
       # Let Steve know how happy you are that he exists
       response.reply "HI STEVE! YOU'RE MY BEST FRIEND! (but only like #{response.match * 100}% of the time)"
   )
+
+  robot.respond /have a soda/i, (res) ->
+    sodasHad = robot.brain.get('totalSodas') * 1 or 0
+    if sodasHad > 4
+      res.reply "I'm too fizzy.."
+
+    else
+      res.reply sodasHad
+      robot.brain.set 'totalSodas', sodasHad+1
+
+  robot.respond /sleep it off/i, (res) ->
+    robot.brain.set 'totalSodas', 0
+    res.send 'zzzzz'
+    res.finish()
+
+  robot.hear /color (.*)/i, (res) ->
+    temp = []
+    myColor = res.match[1]
+    tempColor = robot.brain.get('colorList')
+#    myColor.push '#{tempColor}'
+    temp.push myColor
+    temp.push tempColor
+    res.send temp
+    robot.brain.set 'colorList', temp
+
+  robot.hear /.*/i, (mes) ->
+    temp = []
+    participants = robot.brain.get('bdMembers')
+    if participants
+      if mes.message.user.name not in participants
+        temp.push mes.message.user.name
+        temp.push participants
+      else
+        mes.finish()
+    robot.brain.set 'bdMembers', temp
+
+  robot.respond /member list/i, (mes) ->
+    participants = robot.brain.get('bdMembers')
+    mes.send participants
+  
 
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
