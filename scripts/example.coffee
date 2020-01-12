@@ -42,7 +42,7 @@ module.exports = (robot) ->
     ':apple:', 
     'I love :spaghetti:', 
     ':donut: - donuts for everyone!',
-    ':cake: or :pancakes: - which shall I choose.',
+    ':cake: or :pancakes: - which shall I choose?',
     'All I need is :hearts:.',
     'Thanks, but I am good for now.',
     'Oh no, I think I have had too much today :sick:',
@@ -122,6 +122,11 @@ module.exports = (robot) ->
     colorList.unshift myColor
     res.send colorList
     robot.brain.set 'colorList', [colorList]
+    res.finish()
+
+  robot.hear /clear color/i, (res) ->
+    robot.brain.set 'colorList', []
+    res.send "Color list cleared."
     res.finish()
 
   robot.hear /.*/i, (mes) ->
