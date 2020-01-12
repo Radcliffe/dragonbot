@@ -43,8 +43,9 @@ module.exports = (robot) ->
     robot.brain.set 'colorList', colorList
     res.send myColor
     res.send colorList
-    temp = mes.message.user.id
+    temp = res.message.user.id
     res.send temp
+    res.send "cats and dogs"
 
 
 
