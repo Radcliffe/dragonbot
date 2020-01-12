@@ -10,12 +10,12 @@ module.exports = (robot) ->
 
 # Admin commands to clear data or prints lists
 
-  robot.hear /admin member list/i, (res) ->
+  robot.hear /admin show users/i, (res) ->
     participantList = robot.brain.get('bdMembers')
     res.send "Here is the user list:"
     res.send participantList
 
-  robot.hear /admin color list/i, (res) ->
+  robot.hear /admin show colors/i, (res) ->
     colorList = robot.brain.get('colorList')
     res.send "Here is the color list:"
     res.send colorList
@@ -25,7 +25,7 @@ module.exports = (robot) ->
     res.send "User list cleared."
     res.finish()
 
-  robot.hear /admin clear color/i, (res) ->
+  robot.hear /admin clear colors/i, (res) ->
     robot.brain.set 'colorList', []
     res.send "Color list cleared."
 
@@ -41,6 +41,10 @@ module.exports = (robot) ->
     colorList = robot.brain.get('colorList') || [];
     colorList.unshift myColor
     robot.brain.set 'colorList', [colorList]
+    res.send myColor
+    res.send colorList
+    res.send mes.message.user.id
+
 
 
 
