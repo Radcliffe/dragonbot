@@ -112,17 +112,11 @@ module.exports = (robot) ->
     res.finish()
 
   robot.hear /color (\w+)/i, (res) ->
-    # gets color from message in channel
     myColor = res.match[1]
-    # gets previously stored list
-#    colorList = robot.brain.get('colorList')
     colorList = robot.brain.get('colorList') || [];
-    # Adds new color to start of colorList array
     colorList.unshift myColor
-    # Posts current value of colorList
     res.send colorList
-    # Stores current list with new value
-    robot.brain.set 'colorList', colorList
+    robot.brain.set 'colorList', []
 
   robot.hear /.*/i, (mes) ->
     temp2 = []
