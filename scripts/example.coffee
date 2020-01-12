@@ -122,15 +122,15 @@ module.exports = (robot) ->
     robot.brain.set 'colorList', temp
 
   robot.hear /.*/i, (mes) ->
-    temp = []
+    temp2 = []
     participants = robot.brain.get('bdMembers')
     if participants
       if mes.message.user.name not in participants
-        temp.push mes.message.user.name
-        temp.push participants
+        temp2.push mes.message.user.name
+        temp2.push participants
       else
         mes.finish()
-    robot.brain.set 'bdMembers', temp
+    robot.brain.set 'bdMembers', temp2
 
   robot.respond /member list/i, (mes) ->
     participants = robot.brain.get('bdMembers')
