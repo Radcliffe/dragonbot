@@ -82,7 +82,7 @@ module.exports = (robot) ->
     msg.finish()
 
   robot.hear /green eggs/i, (res) ->
-    room = "Tim Test"
+    room = "tim"
     robot.messageRoom room, "I do not like green eggs and ham.  I do not like them sam-I-am."
 
   # robot.respond /open the (.*) doors/i, (res) ->
