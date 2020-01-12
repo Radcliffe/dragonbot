@@ -122,7 +122,6 @@ module.exports = (robot) ->
     colorList.unshift myColor
     res.send colorList
     robot.brain.set 'colorList', [colorList]
-    res.finish()
 
   robot.hear /clear color/i, (res) ->
     robot.brain.set 'colorList', []
