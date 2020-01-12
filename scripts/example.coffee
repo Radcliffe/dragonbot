@@ -117,6 +117,7 @@ module.exports = (robot) ->
     colorList.unshift myColor
     res.send colorList
     robot.brain.set 'colorList', [colorList]
+    res.finish()
 
   robot.hear /.*/i, (mes) ->
     participants = robot.brain.get('bdMembers') || [];
@@ -127,10 +128,10 @@ module.exports = (robot) ->
         mes.finish()
     robot.brain.set 'bdMembers', participants
 
-  robot.respond /member list/i, (mes) ->
+  robot.respond /member list/i, (res) ->
     participantList = robot.brain.get('bdMembers')
-    mes.send "Here is the list:"
-    mes.send participantList
+    res.send "Here is the list:"
+    res.send participantList
   
 
   # robot.respond /open the (.*) doors/i, (res) ->
