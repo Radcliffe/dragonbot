@@ -117,18 +117,15 @@ module.exports = (robot) ->
     colorList.unshift myColor
     res.send colorList
     robot.brain.set 'colorList', [colorList]
-    robot.brain.set 'bdMembers', []
 
   robot.hear /.*/i, (mes) ->
-    temp2 = []
-    participants = robot.brain.get('bdMembers')
+    participants = robot.brain.get('bdMembers') || [];
     if participants
-      if mes.message.user.name not in participants
-        temp2.push mes.message.user.name
-        temp2.push participants
+      if mes.message.user.id not in participants
+        participants.unshift mes.message.user.id
       else
         mes.finish()
-    robot.brain.set 'bdMembers', temp2
+    robot.brain.set 'bdMembers', participants
 
   robot.respond /member list/i, (mes) ->
     participants = robot.brain.get('bdMembers')
