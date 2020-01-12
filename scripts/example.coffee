@@ -126,7 +126,6 @@ module.exports = (robot) ->
   robot.hear /admin clear color/i, (res) ->
     robot.brain.set 'colorList', []
     res.send "Color list cleared."
-    res.finish()
 
   robot.hear /admin clear users/i, (res) ->
     robot.brain.set 'bdMembers', []
