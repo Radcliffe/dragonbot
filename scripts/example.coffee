@@ -59,8 +59,12 @@ module.exports = (robot) ->
     res.send "Hello, how can I be of service?"
     res.finish()
 
+  # Waits 5 seconds before replying
   robot.hear /hello$|hi$|greetings$|salutations$/i, (res) ->
-    res.send "Hello, how can I help you?"
+    responseDuration = Math.floor(Math.random() * 15) + 1
+    setTimeout ->
+      res.send "Hello, how can I help you?"
+    , responseDuration * 1000
     res.finish()
 
   robot.hear /I like pie/i, (res) ->
@@ -75,7 +79,6 @@ module.exports = (robot) ->
     if matches != null && matches.length > 1
       msg.send 'Sorry, I don\'t understand. Try @Dragonbot help'
 
-  #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
   #   if doorType is "pod bay"
