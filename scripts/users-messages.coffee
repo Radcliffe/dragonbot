@@ -15,7 +15,7 @@ module.exports = (robot) ->
     res.send "Here is the user list:"
     res.send participantList
 
-  robot.hear /admin remove user (\w+)/i, (res) ->
+  robot.hear /admin remove user ([\w-\.]+@([\w-]+\.)+[\w-]{2,4})/i, (res) ->
     remUser = res.match[1]
     bdMembers = robot.brain.get('bdMembers') || [];
     bdMembers = bdMembers.filter (word) -> word isnt "#{remUser}"
@@ -23,7 +23,7 @@ module.exports = (robot) ->
     robot.brain.set 'bdMembers', bdMembers
     res.finish
 
-  robot.hear /admin add user (\w+)/i, (res) ->
+  robot.hear /admin add user ([\w-\.]+@([\w-]+\.)+[\w-]{2,4})/i, (res) ->
     addUser = res.match[1]
     bdMembers = robot.brain.get('bdMembers') || [];
     bdMembers.unshift addUser
