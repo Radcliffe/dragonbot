@@ -43,7 +43,7 @@ module.exports = (robot) ->
         There are lots of friendly humans that hang around here,
         so please feel free to ask questions.
         """
-        mes.send message
+        # mes.send message
 
   robot.hear /admin show colors/i, (res) ->
     colorList = robot.brain.get('colorList')

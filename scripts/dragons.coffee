@@ -6,6 +6,9 @@
 
 module.exports = (robot) ->
 
+  robot.hear /ted/i, (res) ->
+    res.send "What\'s up"
+
   botsnack = [
     'Om nom nom', 
     'Oh thx, have a cookie yourself!', 

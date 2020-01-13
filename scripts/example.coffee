@@ -10,28 +10,30 @@
 
 module.exports = (robot) ->
 
-  robot.brain.data.backdroppers or= {}
+  robot.hear /admin add member (\w+)/i, (res) ->
+    newMember = res.match[1]
+    backdropMembers = robot.brain.get('backdropMembers') || {};
+    backdropMembers[newMember] = {dateJoined: new Date()}
+    robot.brain.set 'backdropMembers', backdropMembers
+    res.send JSON.stringify backdropMembers 
+    res.send "test"
 
-  robot.enter (msg) ->
-   msg.send "#{msg.message.user.name}"
+  robot.hear /admin add issue (\w+) (\S+)/i, (res) ->
+    member = res.match[1]
+    issuePath = res.match[2]
+    backdropMembers = robot.brain.get('backdropMembers') || {};
+    if backdropMembers[member]
+      backdropMembers[member].issue = {issuePath: issuePath, dateCreated: new Date()}
+      robot.brain.set 'backdropMembers', backdropMembers
+      res.send JSON.stringify backdropMembers 
+      res.send "true"
+    res.send "false"
 
-  robot.hear /test1/i, (res) ->
-    kids =
-      brother:
-        name: "Max"
-        age:  11
-      sister:
-        name: "Ida"
-        age:  9
-    robot.brain.set('kids')
-    res.send "Test1"
-    res.send kids.sister.name
-
-  robot.hear /test2/i, (res) ->
-    @temp = robot.brain.get('kids.brother.age')
-    res.send "Test2"
-    res.send @temp
-
+  robot.hear /admin show issues/i, (res) ->
+    backdropMembers = robot.brain.get('backdropMembers') || {};
+    for own member, data of backdropMembers
+      if data.issue
+        res.send "#{member} : #{data.issue.issuePath}"
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
