@@ -36,11 +36,14 @@ module.exports = (robot) ->
       if mes.message.user.id not in participants
         participants.unshift mes.message.user.id
         robot.brain.set 'bdMembers', participants
-        mes.send "Hi. Welcome to the Backdrop CMS community on Zulip."
-        mes.send "I'm your friendly neighborhood Dragonbot."
-        mes.send "Try \'@Dragonbot help\' for some things I can do."
-        mes.send "There are lots of friendly humans that hang around here,"
-        mes.send "so please feel free to ask questions."
+        message = """
+        Hi. Welcome to the Backdrop CMS community on Zulip.
+        I'm your friendly neighborhood Dragonbot.
+        Try \'@Dragonbot help\' for some things I can do.
+        There are lots of friendly humans that hang around here,
+        so please feel free to ask questions.
+        """
+        mes.send message
 
   robot.hear /admin show colors/i, (res) ->
     colorList = robot.brain.get('colorList')
