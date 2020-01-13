@@ -15,6 +15,33 @@ module.exports = (robot) ->
     res.send "Here is the user list:"
     res.send participantList
 
+  robot.hear /admin remove user (\w+)/i, (res) ->
+    remUser = res.match[1]
+    bdMembers = robot.brain.get('bdMembers') || [];
+    bdMembers = bdMembers.filter (word) -> word isnt "#{remUser}"
+    res.send "Removing user #{remUser}"
+    robot.brain.set 'bdMembers', bdMembers
+    res.finish
+
+  robot.hear /admin add user (\w+)/i, (res) ->
+    addUser = res.match[1]
+    bdMembers = robot.brain.get('bdMembers') || [];
+    bdMembers.unshift addUser
+    robot.brain.set 'bdMembers', bdMembers
+    res.finish
+
+  robot.hear /.*/i, (mes) ->
+    participants = robot.brain.get('bdMembers') || [];
+    if participants
+      if mes.message.user.id not in participants
+        participants.unshift mes.message.user.id
+        robot.brain.set 'bdMembers', participants
+        mes.send "Hi. Welcome to the Backdrop CMS community on Zulip."
+        mes.send "I'm your friendly neighborhood Dragonbot."
+        mes.send "Try \'@Dragonbot help\' for some things I can do."
+        mes.send "There are lots of friendly humans that hang around here,"
+        mes.send "so please feel free to ask questions."
+
   robot.hear /admin show colors/i, (res) ->
     colorList = robot.brain.get('colorList')
     res.send "Here is the color list:"
@@ -36,19 +63,6 @@ module.exports = (robot) ->
     res.send "Removing color #{remColor}"
     robot.brain.set 'colorList', colorList
     res.finish
-
-
-  robot.hear /.*/i, (mes) ->
-    participants = robot.brain.get('bdMembers') || [];
-    if participants
-      if mes.message.user.id not in participants
-        participants.unshift mes.message.user.id
-        robot.brain.set 'bdMembers', participants
-        mes.send "Hi. Welcome to the Backdrop CMS community on Zulip."
-        mes.send "I'm your friendly neighborhood Dragonbot."
-        mes.send "Try \'@Dragonbot help\' for some things I can do."
-        mes.send "There are lots of friendly humans that hang around here,"
-        mes.send "so please feel free to ask questions."
 
   robot.hear /admin add color (\w+)/i, (res) ->
     myColor = res.match[1]
