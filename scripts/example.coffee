@@ -10,6 +10,29 @@
 
 module.exports = (robot) ->
 
+  robot.brain.data.backdroppers or= {}
+
+  robot.enter (msg) ->
+   msg.send "#{msg.message.user.name}"
+
+  robot.hear /test1/i, (res) ->
+    kids =
+      brother:
+        name: "Max"
+        age:  11
+      sister:
+        name: "Ida"
+        age:  9
+    robot.brain.set('kids')
+    res.send "Test1"
+    res.send kids.sister.name
+
+  robot.hear /test2/i, (res) ->
+    @temp = robot.brain.get('kids.brother.age')
+    res.send "Test2"
+    res.send @temp
+
+
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #

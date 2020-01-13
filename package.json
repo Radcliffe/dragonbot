@@ -5,6 +5,7 @@
   "author": "stpaultim <tim@politalk.org>",
   "description": "A bot for the Backdrop Community on Zulip",
   "dependencies": {
+    "child_process": "^1.0.2",
     "hubot": "^3.3.2",
     "hubot-diagnostics": "^1.0.0",
     "hubot-factoids": "^1.2.0",

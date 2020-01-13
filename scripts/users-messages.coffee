@@ -75,6 +75,25 @@ module.exports = (robot) ->
     res.finish
 
 
+  robot.hear /.*/i, (mes) ->
+    participants = robot.brain.get('bdMembers') || [];
+    if participants
+      if mes.message.user.id not in participants
+        participants.unshift mes.message.user.id
+        robot.brain.set 'bdMembers', participants
+        message = """
+            Hi. Welcome to the Backdrop CMS community on Zulip.
+            I'm your friendly neighborhood Dragonbot.
+            Try \'@Dragonbot help\' for some things I can do.
+            There are lots of friendly humans that hang around here,
+            so please feel free to ask questions.
+            """
+        mes.send message
+
+
+
+
+
 
 
   
