@@ -10,31 +10,6 @@
 
 module.exports = (robot) ->
 
-  robot.hear /admin add member (\w+)/i, (res) ->
-    newMember = res.match[1]
-    backdropMembers = robot.brain.get('backdropMembers') || {};
-    backdropMembers[newMember] = {dateJoined: new Date()}
-    robot.brain.set 'backdropMembers', backdropMembers
-    res.send JSON.stringify backdropMembers 
-    res.send "test"
-
-  robot.hear /admin add issue (\w+) (\S+)/i, (res) ->
-    member = res.match[1]
-    issuePath = res.match[2]
-    backdropMembers = robot.brain.get('backdropMembers') || {};
-    if backdropMembers[member]
-      backdropMembers[member].issue = {issuePath: issuePath, dateCreated: new Date()}
-      robot.brain.set 'backdropMembers', backdropMembers
-      res.send JSON.stringify backdropMembers 
-      res.send "true"
-    res.send "false"
-
-  robot.hear /admin show issues/i, (res) ->
-    backdropMembers = robot.brain.get('backdropMembers') || {};
-    for own member, data of backdropMembers
-      if data.issue
-        res.send "#{member} : #{data.issue.issuePath}"
-
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
