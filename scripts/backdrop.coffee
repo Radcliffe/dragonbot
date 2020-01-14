@@ -65,11 +65,17 @@ module.exports = (robot) ->
       if data.issue
         res.send "#{member} : #{data.issue.issuePath}"
 
-  robot.hear /bd show members/i, (res) ->
+  robot.hear /bd show members1/i, (res) ->
+    backdropMembers = robot.brain.get('backdropMembers') || {};
+    res.send "Here is a list of all members1"
+    for own member, data of backdropMembers
+      res.send "#{data.name} : #{data.issue.issuePath} : #{data.dateJoined}"
+
+  robot.hear /bd show members2/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
     res.send "Here is a list of all members"
     for own member, data of backdropMembers
-      res.send "#{data.name} : #{data.issue.issuePath} : #{data.dateJoined}"
+      res.send "#{member} : #{data.issue.issuePath} : #{data.dateJoined}"
 
   robot.hear /bd show member json/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
