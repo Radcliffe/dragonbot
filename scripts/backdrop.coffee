@@ -98,7 +98,7 @@ module.exports = (robot) ->
       res.send JSON.stringify backdropMembers 
 
   robot.respond /attention|needs attention|show needs attention/i, (res) ->
-    message = "Here are some issues that need attention: \n"
+    message = "Here are some issues that need attention: \n\n"
     backdropMembers = robot.brain.get('backdropMembers') || {};
     for own member, data of backdropMembers
       if data.issue
@@ -111,9 +111,9 @@ module.exports = (robot) ->
 
   robot.hear /bd show members/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
-    message = "Here is a list of all members: \n"
+    message = "Here is a list of all members: \n\n"
     for own member, data of backdropMembers
-      message += "#{data.name} : #{data.dateJoined} \n"
+      message += "#{data.name} : #{member} \n"
     res.send message
 
   robot.hear /bd show member json/i, (res) ->
