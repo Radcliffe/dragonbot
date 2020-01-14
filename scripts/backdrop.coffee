@@ -20,15 +20,14 @@ module.exports = (robot) ->
         dateJoined: new Date(), 
         dateLastVisit: new Date()
       }
-      message = 
-      """
+      message = """
         Hi. Welcome to the Backdrop CMS community on Zulip. I'm your friendly neighborhood Dragonbot.
         Try \'@Dragonbot help\' for some things I can do. 
         There are lots of friendly humans that hang around here, so please feel free to ask questions.
       """
       # mes.send message
     else
-      backdropMembers[member] = {dateLastVisit: new Date()}
+      backdropMembers[member].dateLastVisit = new Date()
     robot.brain.set 'backdropMembers', backdropMembers
 
   robot.hear /bd add member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (.+)/i, (res) ->
@@ -46,7 +45,7 @@ module.exports = (robot) ->
     memberID = res.match[1]
     memberName = res.match[3]
     backdropMembers = robot.brain.get('backdropMembers') || {};
-    backdropMembers[memberID] = {name: memberName}
+    backdropMembers[memberID].name = memberName
     robot.brain.set 'backdropMembers', backdropMembers
     res.send "#{memberID} updated"
 
@@ -81,5 +80,7 @@ module.exports = (robot) ->
   robot.hear /bd show member json/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
     res.send JSON.stringify backdropMembers
+
+
 
 
