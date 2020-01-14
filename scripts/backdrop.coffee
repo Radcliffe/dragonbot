@@ -35,7 +35,11 @@ module.exports = (robot) ->
     memberName = res.match[3]
     backdropMembers = robot.brain.get('backdropMembers') || {};
     if !backdropMembers[memberID]
-      backdropMembers[memberID] = {name: memberName, dateJoined: new Date()}
+      backdropMembers[memberID] = {
+        name: memberName, 
+        dateJoined: new Date(),
+        dateLastVisit: new Date()
+      }
       robot.brain.set 'backdropMembers', backdropMembers
       res.send "#{memberID} added"
     else 
@@ -46,6 +50,7 @@ module.exports = (robot) ->
     memberName = res.match[3]
     backdropMembers = robot.brain.get('backdropMembers') || {};
     backdropMembers[memberID].name = memberName
+    backdropMembers[memberID].dateLastVisit = new Date()
     robot.brain.set 'backdropMembers', backdropMembers
     res.send "#{memberID} updated"
 
