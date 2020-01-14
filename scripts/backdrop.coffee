@@ -46,7 +46,7 @@ module.exports = (robot) ->
     memberID = res.match[1]
     memberName = res.match[3]
     backdropMembers = robot.brain.get('backdropMembers') || {};
-    backdropMembers[memberID] = {name: memberName, dateJoined: new Date()}
+    backdropMembers[memberID] = {name: memberName}
     robot.brain.set 'backdropMembers', backdropMembers
     res.send "#{memberID} updated"
 
