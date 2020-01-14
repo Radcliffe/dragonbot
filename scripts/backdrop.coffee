@@ -4,8 +4,7 @@
 # These commands are supplements for other scripts as well
 #
 # Commands:
-#   bd add member
-#
+#   hubot show priority issues - Show a list of top issues
 
 backdropMembers = {}
 
@@ -91,7 +90,7 @@ module.exports = (robot) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
     for own member, data of backdropMembers
       if data.issue
-        res.send "#{member} : #{data.issue.issuePath}"
+        res.send "#{data.name} : #{data.issue.issuePath}"
 
   robot.hear /bd show members/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
