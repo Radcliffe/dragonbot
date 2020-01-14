@@ -42,7 +42,7 @@ module.exports = (robot) ->
     else 
       res.send "#{memberID} already exists."
 
-  robot.hear /bd update member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (\w+)/i, (res) ->
+  robot.hear /bd update member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (.+)/i, (res) ->
     memberID = res.match[1]
     memberName = res.match[3]
     backdropMembers = robot.brain.get('backdropMembers') || {};
