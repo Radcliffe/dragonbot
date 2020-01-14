@@ -4,7 +4,8 @@
 # These commands are supplements for other scripts as well
 #
 # Commands:
-#   hubot show priority issues - Show a list of top issues
+#   hubot show needs attention - Show a list of issues that need your attention
+#   hubot attention - How to add an issue to 'needs attention' list
 
 backdropMembers = {}
 
@@ -94,7 +95,10 @@ module.exports = (robot) ->
       robot.brain.set 'backdropMembers', backdropMembers
       res.send JSON.stringify backdropMembers 
 
-  robot.respond /show priority issues/i, (res) ->
+  robot.respond /needs attention|attention/i, (res) ->
+    res.send "Type '@Dragonbot show needs attention' to see issue that our team has identified as needing attention."
+
+  robot.respond /show needs attention/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
     for own member, data of backdropMembers
       if data.issue
