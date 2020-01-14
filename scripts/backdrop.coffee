@@ -25,7 +25,7 @@ module.exports = (robot) ->
         Try \'@Dragonbot help\' for some things I can do. 
         There are lots of friendly humans that hang around here, so please feel free to ask questions.
       """
-      # mes.send message
+      mes.send message
     else
       backdropMembers[member].dateLastVisit = new Date()
     robot.brain.set 'backdropMembers', backdropMembers
