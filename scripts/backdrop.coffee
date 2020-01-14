@@ -107,9 +107,10 @@ module.exports = (robot) ->
 
   robot.hear /bd show members/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
-    res.send "Here is a list of all members"
+    message = "Here is a list of all members: \n"
     for own member, data of backdropMembers
-      res.send "#{data.name} : #{data.dateJoined}"
+      message += "#{data.name} : #{data.dateJoined} \n"
+    res.send message
 
   robot.hear /bd show member json/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
