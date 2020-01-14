@@ -102,7 +102,7 @@ module.exports = (robot) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
     for own member, data of backdropMembers
       if data.issue
-        message += "#{data.name} : #{data.issue.issuePath}"
+        message += "#{data.name} : #{data.issue.issuePath} <br>"
     res.send message
 
   robot.hear /bd show members/i, (res) ->
