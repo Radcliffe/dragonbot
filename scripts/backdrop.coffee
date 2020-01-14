@@ -97,14 +97,13 @@ module.exports = (robot) ->
       robot.brain.set 'backdropMembers', backdropMembers
       res.send JSON.stringify backdropMembers 
 
-  robot.respond /needs attention|attention/i, (res) ->
-    res.send "Type '@Dragonbot show needs attention' to see issue that our team has identified as needing attention."
-
-  robot.respond /show needs attention/i, (res) ->
+  robot.respond /attention|needs attention|show needs attention/i, (res) ->
+    message = "Here are some issues that need attention:"
     backdropMembers = robot.brain.get('backdropMembers') || {};
     for own member, data of backdropMembers
       if data.issue
-        res.send "#{data.name} : #{data.issue.issuePath}"
+        message =+ res.send "#{data.name} : #{data.issue.issuePath}"
+      res.send message
 
   robot.hear /bd show members/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
