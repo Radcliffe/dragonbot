@@ -38,10 +38,17 @@ module.exports = (robot) ->
     if !backdropMembers[memberID]
       backdropMembers[memberID] = {name: memberName, dateJoined: new Date()}
       robot.brain.set 'backdropMembers', backdropMembers
-      res.send JSON.stringify backdropMembers 
       res.send "#{memberID} added"
     else 
       res.send "#{memberID} already exists."
+
+  robot.hear /bd update member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (\w+)/i, (res) ->
+    memberID = res.match[1]
+    memberName = res.match[3]
+    backdropMembers = robot.brain.get('backdropMembers') || {};
+    backdropMembers[memberID] = {name: memberName, dateJoined: new Date()}
+    robot.brain.set 'backdropMembers', backdropMembers
+    res.send "#{memberID} added"
 
   robot.hear /bd add issue ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (\S+)/i, (res) ->
     member = res.match[1]
