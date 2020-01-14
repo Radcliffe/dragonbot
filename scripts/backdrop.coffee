@@ -31,7 +31,7 @@ module.exports = (robot) ->
       backdropMembers[member] = {dateJoined: new Date(), dateLastVisit: new Date()}
     robot.brain.set 'backdropMembers', backdropMembers
 
-  robot.hear /bd add member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (\w+)/i, (res) ->
+  robot.hear /bd add member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (.+)/i, (res) ->
     memberID = res.match[1]
     memberName = res.match[3]
     backdropMembers = robot.brain.get('backdropMembers') || {};
@@ -48,7 +48,14 @@ module.exports = (robot) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
     backdropMembers[memberID] = {name: memberName, dateJoined: new Date()}
     robot.brain.set 'backdropMembers', backdropMembers
-    res.send "#{memberID} added"
+    res.send "#{memberID} updated"
+
+  robot.hear /bd remove member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4})/i, (res) ->
+    memberID = res.match[1]
+    backdropMembers = robot.brain.get('backdropMembers') || {};
+    delete backdropMembers[memberId]
+    robot.brain.set 'backdropMembers', backdropMembers
+    res.send "#{memberID} removed"
 
   robot.hear /bd add issue ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (\S+)/i, (res) ->
     member = res.match[1]
