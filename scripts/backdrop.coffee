@@ -103,6 +103,10 @@ module.exports = (robot) ->
     for own member, data of backdropMembers
       if data.issue
         message += "#{data.name} : #{data.issue.issuePath} \n"
+    message += "\n" 
+    message += "Add to list: '@Dragonbot add issue [path]'' \n"
+    message += "Remove your issue: '@Dragonbot remove issue' \n" 
+    message += "Only one issue per user."  
     res.send message
 
   robot.hear /bd show members/i, (res) ->
