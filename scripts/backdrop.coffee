@@ -28,7 +28,7 @@ module.exports = (robot) ->
       """
       # mes.send message
     else
-      backdropMembers[member] = {dateJoined: new Date(), dateLastVisit: new Date()}
+      backdropMembers[member] = {dateLastVisit: new Date()}
     robot.brain.set 'backdropMembers', backdropMembers
 
   robot.hear /bd add member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (.+)/i, (res) ->
