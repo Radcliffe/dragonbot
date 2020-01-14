@@ -86,6 +86,14 @@ module.exports = (robot) ->
       robot.brain.set 'backdropMembers', backdropMembers
       res.send JSON.stringify backdropMembers 
 
+  robot.hear /bd remove issue ([\w-\.]+@([\w-]+\.)+[\w-]{2,4})/i, (res) ->
+    member = res.match[1]
+    backdropMembers = robot.brain.get('backdropMembers') || {};
+    if backdropMembers[member]
+      delete backdropMembers[member].issue
+      robot.brain.set 'backdropMembers', backdropMembers
+      res.send JSON.stringify backdropMembers 
+
   robot.respond /show priority issues/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
     for own member, data of backdropMembers
