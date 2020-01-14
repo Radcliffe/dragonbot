@@ -59,6 +59,25 @@ module.exports = (robot) ->
     robot.brain.set 'backdropMembers', backdropMembers
     res.send "#{memberID} removed"
 
+  robot.respond /add issue (\S+)/i, (res) -> 
+    member = res.message.user.id
+    issue = res.match[1]
+    backdropMembers = robot.brain.get('backdropMembers') || {};
+    if !backdropMembers[member].issue
+      res.send "Added issue: #{issue}"
+      backdropMembers[member].issue = {issuePath: issue, dateCreated: new Date()}
+    else
+      res.send "You already have an issue listed try '@Dragonbot remove issue' and then try again."
+
+  robot.respond /remove issue/i, (res) -> 
+    member = res.message.user.id
+    backdropMembers = robot.brain.get('backdropMembers') || {};
+    if backdropMembers[member].issue
+      delete backdropMembers[member].issue
+      res.send "Your issue is removed. Try '@dragonbot add issue [PathToIssue]' to add another."
+    else
+      res.send "You dont' have an issue to remove"
+
   robot.hear /bd add issue ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (\S+)/i, (res) ->
     member = res.match[1]
     issuePath = res.match[3]
@@ -68,7 +87,7 @@ module.exports = (robot) ->
       robot.brain.set 'backdropMembers', backdropMembers
       res.send JSON.stringify backdropMembers 
 
-  robot.hear /bd show issues/i, (res) ->
+  robot.respond /show priority issues/i, (res) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
     for own member, data of backdropMembers
       if data.issue
