@@ -98,7 +98,7 @@ module.exports = (robot) ->
       res.send JSON.stringify backdropMembers 
 
   robot.respond /attention|needs attention|show needs attention/i, (res) ->
-    message = "Here are some issues that need attention:"
+    message = "Here are some issues that need attention: \n"
     backdropMembers = robot.brain.get('backdropMembers') || {};
     for own member, data of backdropMembers
       if data.issue
