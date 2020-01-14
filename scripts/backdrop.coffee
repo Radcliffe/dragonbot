@@ -53,7 +53,7 @@ module.exports = (robot) ->
   robot.hear /bd remove member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4})/i, (res) ->
     memberID = res.match[1]
     backdropMembers = robot.brain.get('backdropMembers') || {};
-    delete backdropMembers[memberId]
+    delete backdropMembers[memberID]
     robot.brain.set 'backdropMembers', backdropMembers
     res.send "#{memberID} removed"
 
