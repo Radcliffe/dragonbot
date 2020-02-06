@@ -23,7 +23,7 @@ module.exports = (robot) ->
         dateLastVisit: new Date()
       }
       message = """
-        Hi, #{mes.message.user.name}. Welcome to the Backdrop CMS community on Zulip. I'm your friendly neighborhood Dragonbot. Try \'@Dragonbot help\' for a list of things I can help you with. There are lots of friendly humans that hang around here, so please feel free to ask questions.
+        Hi, #{mes.message.user.name}. Welcome to the Backdrop CMS community on Zulip. I'm your friendly neighborhood Dragonbot. Try \'@Dragonbot help\' for a list of things I can help you with. There are lots of friendly humans that hang around here, so please feel free to ask questions. Here is a short (3 min) video to help you navigate Zulip.
       """
       mes.send message
     else
