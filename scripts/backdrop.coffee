@@ -13,16 +13,11 @@ backdropMembers = {}
 
 module.exports = (robot) ->
 
-
-
   welcomeMessage = """
        Welcome to the Backdrop CMS community on Zulip. I'm your friendly neighborhood Dragonbot. Try \'@Dragonbot help\' for a list of things I can help you with. There are lots of friendly humans that hang around here, so please feel free to ask questions. 
 
        Here is a short (3 min) video to help you navigate Zulip. https://youtu.be/DN8YL2MrsSU
     """
-
-  robot.hear /test/i, (mes) -> 
-    mes.send welcomeMessage
 
   robot.hear /.*/i, (mes) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
@@ -39,7 +34,7 @@ module.exports = (robot) ->
     robot.brain.set 'backdropMembers', backdropMembers
 
   robot.respond /welcome/i, (res) ->
-    mes.send welcomeMessage
+    res.send welcomeMessage
 
   robot.hear /bd add member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (.+)/i, (res) ->
     memberID = res.match[1]
