@@ -14,7 +14,7 @@ backdropMembers = {}
 module.exports = (robot) ->
 
   welcomeMessage = """
-      Hi, #{mes.message.user.name}. Welcome to the Backdrop CMS community on Zulip. I'm your friendly neighborhood Dragonbot. Try \'@Dragonbot help\' for a list of things I can help you with. There are lots of friendly humans that hang around here, so please feel free to ask questions. Here is a short (3 min) video to help you navigate Zulip.
+       Welcome to the Backdrop CMS community on Zulip. I'm your friendly neighborhood Dragonbot. Try \'@Dragonbot help\' for a list of things I can help you with. There are lots of friendly humans that hang around here, so please feel free to ask questions. Here is a short (3 min) video to help you navigate Zulip.
     """
 
   robot.hear /.*/i, (mes) ->
@@ -26,14 +26,14 @@ module.exports = (robot) ->
         dateJoined: new Date(), 
         dateLastVisit: new Date()
       }
-      mes.send welcomeMessage
+      mes.send "Hi, #{mes.message.user.name}. #{welcomeMessage}"
     else
       backdropMembers[member].dateLastVisit = new Date()
     robot.brain.set 'backdropMembers', backdropMembers
 
   robot.respond /welcome/i, (res) ->
     message = welcomeMessage
-    mes.send welcomeMessage
+    mes.send message
 
   robot.hear /bd add member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (.+)/i, (res) ->
     memberID = res.match[1]
