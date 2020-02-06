@@ -19,14 +19,11 @@ module.exports = (robot) ->
     ':cake: or :pancakes: - which shall I choose?',
     'All I need is :hearts:.',
     'Thanks, but I am good for now.',
-    'Oh no, I think I have had too much today :sick:',
     'Backdrop humans are so generous. Thanks!',
     'Are you volunteering?',
-    'I\'ll have a pickle please!',
-    'Anything, anything but olives.',
     'I don\'t mind if I do.',
     'Are you trying to curry favor with me?',
-    ':cookie: :cookie: :cookie: :cookie: :cookie: :cookie: :cookie: :cookie: :cookie: :cookie: - Is that enough for everyone?'
+    ':cookie: :cookie: :cookie: :cookie: :cookie: :cookie: :cookie: :cookie: :cookie: :cookie: - Is this enough for everyone?'
   ]
 
   robot.hear /botsnack/i, (res) ->
