@@ -26,15 +26,14 @@ module.exports = (robot) ->
         dateJoined: new Date(), 
         dateLastVisit: new Date()
       }
-      message = #{welcomeMessage}
-      mes.send message
+      mes.send welcomeMessage
     else
       backdropMembers[member].dateLastVisit = new Date()
     robot.brain.set 'backdropMembers', backdropMembers
 
   robot.respond /welcome/i, (res) ->
-    message = #{welcomeMessage}
-
+    message = welcomeMessage
+    mes.send welcomeMessage
 
   robot.hear /bd add member ([\w-\.]+@([\w-]+\.)+[\w-]{2,4}) (.+)/i, (res) ->
     memberID = res.match[1]
