@@ -127,6 +127,10 @@ module.exports = (robot) ->
     backdropMembers = robot.brain.get('backdropMembers') || {};
     res.send JSON.stringify backdropMembers
 
+  robot.hear /green eggs/i, (res) ->
+    room = "Dragonbot"
+    robot.messageRoom room, "I do not like green eggs and ham.  I do not like them sam-I-am."
+
 
 
 
