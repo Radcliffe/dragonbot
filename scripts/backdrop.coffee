@@ -128,7 +128,8 @@ module.exports = (robot) ->
     res.send JSON.stringify backdropMembers
 
   robot.hear /green eggs/i, (res) ->
-    robot.messageRoom "Dragonbot Team", "I do not like green eggs and ham.  I do not like them sam-I-am."
+    room = res.message.room
+    robot.messageRoom room, "I do not like green eggs and ham.  I do not like them sam-I-am."
 
 
 
