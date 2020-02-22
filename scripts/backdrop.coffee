@@ -129,7 +129,11 @@ module.exports = (robot) ->
 
   robot.hear /green eggs/i, (res) ->
     room = 'stream:tim topic:Test'
-    robot.messageRoom room, "Test"
+    robot.messageRoom room, 'Someone said "green eggs"'
+
+  robot.hear /peanut butter/i, (res) ->
+    room =  res.envelope.user.name
+    robot.messageRoom room, "Did say some the secret password"
 
 
 
