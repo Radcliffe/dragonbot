@@ -19,7 +19,8 @@
     "hubot-redis-brain": "^1.0.0",
     "hubot-rules": "^1.0.0",
     "hubot-shipit": "^0.2.1",
-    "hubot-zulip": "^0.1.0"
+    "hubot-zulip": "^0.1.0",
+    "lodash": "^4.17.15"
   },
   "engines": {
     "node": "12.10.x"
