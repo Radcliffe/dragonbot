@@ -6,6 +6,7 @@
   "description": "A bot for the Backdrop Community on Zulip",
   "dependencies": {
     "child_process": "^1.0.2",
+    "chrono-node": "^1.4.3",
     "hubot": "^3.3.2",
     "hubot-diagnostics": "^1.0.0",
     "hubot-factoids": "^1.2.0",
