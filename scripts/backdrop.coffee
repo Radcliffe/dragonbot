@@ -128,7 +128,7 @@ module.exports = (robot) ->
     res.send JSON.stringify backdropMembers
 
   robot.hear /green eggs/i, (res) ->
-    room = 'stream:tim'
+    room = 'stream:tim topic:Test'
     robot.messageRoom room, "Test"
 
 
