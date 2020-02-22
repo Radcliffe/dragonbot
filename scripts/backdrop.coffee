@@ -132,7 +132,7 @@ module.exports = (robot) ->
     robot.messageRoom room, 'Someone said "green eggs"'
 
   robot.hear /peanut butter/i, (res) ->
-    room =  res.envelope.user.name
+    room =  res.envelope.user.id
     robot.messageRoom room, "Did say some the secret password"
 
 
