@@ -123,7 +123,7 @@ class Reminder
 module.exports = (robot) ->
   reminders = new Reminders(robot)
 
-  robot.respond(/show reminders$/i, (msg) ->
+  robot.respond(/(show|list) reminders|remind (show|list)$/i, (msg) ->
     text = ''
     for reminder in reminders.cache
       text += "#{reminder.action} #{reminder.formatDue()}\n"
