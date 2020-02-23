@@ -57,7 +57,7 @@ class Reminders
     now = (new Date).getTime()
     trigger = =>
       reminder = @removeFirst()
-      @robot.reply(reminder.msg_envelope, 'you asked me to remind you to ' + reminder.action)
+      @robot.reply(reminder.msg_envelope, 'you asked me to remind you '+ reminder.connector + ' ' + reminder.action)
       @queue()
     # setTimeout uses a 32-bit INT
     extendTimeout = (timeout, callback) ->
@@ -141,10 +141,12 @@ module.exports = (robot) ->
   robot.respond(/remind me (in|on) (.+?) (to|that) (.*)/i, (msg) ->
     type = msg.match[1]
     time = msg.match[2]
+    connector = msg.match[3]
     action = msg.match[4]
     options =
       msg_envelope: msg.envelope,
-      action: action
+      action: action,
+      connector: connector,
       time: time
     if type is 'on'
       # parse the date (convert to timestamp)
@@ -153,5 +155,5 @@ module.exports = (robot) ->
         options.due = due
     reminder = new Reminder(options)
     reminders.add(reminder)
-    msg.send "I'll remind you to #{action} #{reminder.formatDue()}"
+    msg.send "I'll remind you #{connector} #{action} #{reminder.formatDue()}"
   )
