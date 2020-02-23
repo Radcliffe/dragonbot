@@ -135,7 +135,7 @@ module.exports = (robot) ->
     str1 = "pm-with:"
     str2 =  res.envelope.user.id
     room = str1.concat(str2)
-    robot.messageRoom room, "Did say some the secret password"
+    robot.messageRoom room, "Did someone say the secret password"
 
 
 
