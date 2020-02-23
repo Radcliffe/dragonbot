@@ -138,7 +138,7 @@ module.exports = (robot) ->
     msg.send("Deleted reminder #{query}") if reminders.cache.length isnt prevLength
   )
 
-  robot.respond(/remind me (in|on) (.+?) to (.*)/i, (msg) ->
+  robot.respond(/remind me (in|on) (.+?) (to|that) (.*)/i, (msg) ->
     type = msg.match[1]
     time = msg.match[2]
     action = msg.match[3]
