@@ -141,7 +141,7 @@ module.exports = (robot) ->
   robot.respond(/remind me (in|on) (.+?) (to|that) (.*)/i, (msg) ->
     type = msg.match[1]
     time = msg.match[2]
-    action = msg.match[3]
+    action = msg.match[4]
     options =
       msg_envelope: msg.envelope,
       action: action
