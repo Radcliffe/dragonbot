@@ -10,9 +10,9 @@
 #   None
 #
 # Commands:
-#   hubot remind me (on <date>|in <time>) to <action> - Set a reminder in <time> to do an <action> <time> is in the format 1 day, 2 hours, 5 minutes etc. Time segments are optional, as are commas
+#   hubot remind me (on <date>|in <time>) to/that <action> - Set a reminder in <time> to do an <action> <time> is in the format 1 day, 2 hours, 5 minutes etc. Time segments are optional, as are commas
 #   hubot delete reminder <action> - Delete reminder matching <action> (exact match required)
-#   hubot show reminders
+#   hubot remind show - Shows a list of current reminders ('show reminders' will also work)
 #
 # Author:
 #   whitman
