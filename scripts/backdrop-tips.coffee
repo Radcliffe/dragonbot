@@ -39,10 +39,10 @@ module.exports = (robot) ->
     'Not a coder and want to contribute - have you looked through the BackdropCMS.org issue queue recently.
       There are lots of "community" issues in this queue - https://github.com/backdrop-ops/backdropcms.org/issues',
     'Drink lots of water'
-
-
   ]
 
-  robot.hear /tips/i, (res) ->
-    res.send "Here is a random Backdrop CMS community tip"
-    res.send res.random tips
+  robot.respond /tip|tips/i, (res) ->
+    message = "Here is a random Backdrop CMS community tip:"
+    message += "\n"
+    message += res.random tips
+    res.send message
