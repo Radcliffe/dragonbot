@@ -76,7 +76,7 @@ class Reminders
 
 class Reminder
   constructor: (data) ->
-    {@msg_envelope, @action, @time, @due} = data
+    {@msg_envelope, @action, @time, @due, @connector} = data
 
     if @time and !@due
       @time.replace(/^\s+|\s+$/g, '')
