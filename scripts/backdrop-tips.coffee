@@ -59,13 +59,13 @@ module.exports = (robot) ->
   ]
 
   robot.respond /tip|tips/i, (res) ->
-    message = "Here is a random Backdrop CMS community tip:\n"
     message += "\n"
     message += res.random tips
+    message += "\n\n"
+    message +="Type '@Dragonbot tip' for more random community tips.\n"
     res.send message
 
   robot.hear /dragonbot (tip|tips)/i, (res) ->
-    message = "Here is a random Backdrop CMS community tip:\n"
     message += "\n"
     message += res.random tips
     message += "\n\n"
