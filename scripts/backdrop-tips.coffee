@@ -31,7 +31,8 @@ module.exports = (robot) ->
     'Never hack core',
     'Become an advocate for an issue in Backdrop CMS core. You don\'t have to fix it yourself. Just help move it forward. Anyone
       can advocate for an issue. https://backdropcms.org/news/become-an-advocate-for-a-new-feature-in-backdrop-core',
-    'Please, feel free to join in one of our weekly meetings. We love to see new faces. ',
+    'Please, feel free to join in one of our weekly meetings. We love to see new faces.
+      Watch chat channels for more info - https://backdropcms.org/support/resources',
     'Find us on Facebook - https://www.facebook.com/backdropcms',
     'If you use Facebook, share one of our posts - https://www.facebook.com/backdropcms',
     'See what people are saying about Backdrop CMS around the web - https://backdropcms.org/news/mentions',
@@ -40,6 +41,12 @@ module.exports = (robot) ->
     'Checkout the Backdrop CMS Youtube channel - meetings, tutorials, etc. - https://www.youtube.com/user/backdropcms/videos',
     'Help us create simple and short "how to" videos for Backdrop CMS - https://www.youtube.com/user/backdropcms/videos',
     'Always be nice to each other',
+    'There is a weekly developer meeting every Thursday at 1pm (Pacific Time - USA) and fortnightly design and
+      outreach meetings every other Thursday at 12noon (Pacific Time - USA).',
+    'Here is the information you need to join the Backdrop CMS contrib group. https://backdropcms.org/contribute/join',
+    'Here is a list of the top 125 Drupal 7 modules that have been ported to Backdrop CMS. Let us know if this list needs updating.
+      https://github.com/backdrop-ops/contrib/issues/34',
+    'Here is a list of the many Backdrop CMS related issue queues: https://backdropcms.org/resources/backdrop-cms-github',
     'Have you been to our API site yet - https://api.backdropcms.org/?',
     'Follow us on Twitter - https://twitter.com/backdropcms',
     'See our "Services Providers" page or add yourself - https://backdropcms.org/support/services',
