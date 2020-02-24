@@ -41,7 +41,9 @@ module.exports = (robot) ->
     'Checkout the Backdrop CMS Youtube channel - meetings, tutorials, etc. - https://www.youtube.com/user/backdropcms/videos',
     'Help us create simple and short "how to" videos for Backdrop CMS - https://www.youtube.com/user/backdropcms/videos',
     'Always be nice to each other',
-    
+    'Build a sub-theme of Basis, the default frontend theme of
+      Backdrophttps://backdropcms.org/news/build-sub-theme-basis-default-frontend-theme-backdrop',
+    'Getting Started with Backdrop and DDEV-Local - https://backdropcms.org/news/getting-started-backdrop-and-ddev-local',
     'There is a weekly developer meeting every Thursday at 1pm (Pacific Time - USA) and fortnightly design and
       outreach meetings every other Thursday at 12noon (Pacific Time - USA).',
     'Here is the information you need to join the Backdrop CMS contrib group. https://backdropcms.org/contribute/join',
