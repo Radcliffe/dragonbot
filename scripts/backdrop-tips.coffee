@@ -51,7 +51,12 @@ module.exports = (robot) ->
       https://github.com/backdrop-ops/contrib/issues/34',
     'Here is a list of the many Backdrop CMS related issue queues: https://backdropcms.org/resources/backdrop-cms-github',
     'Have you been to our API site yet - https://api.backdropcms.org/?',
+    'We always need content for the Backdrop CMS blog. Please, let us know if you are able to
+      help write a blog post. https://backdropcms.org/contact',
     'Follow us on Twitter - https://twitter.com/backdropcms',
+    'Pick a contrib module you like and post some feedback in the issue queue for that module. Our module contributors
+      would love to hear what you think of their modules and how they can be improved. Every module page has a link to their
+      respective issue queue in the right hand column of the module page: https://backdropcms.org/modules',
     'See our "Services Providers" page or add yourself - https://backdropcms.org/support/services',
     'Add your Backdrop CMS project to the community showcase - https://backdropcms.org/showcase',
     'Most recently released OR updated modules are displayed at the top: https://backdropcms.org/modules',
