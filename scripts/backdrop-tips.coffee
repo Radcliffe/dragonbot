@@ -8,7 +8,6 @@
 #   hubot attention - How to add an issue to 'needs attention' list
 #   hubot remove issue - Remove your 'needs attetion' issue
 #   hubot add issue [IssuePath] - Add an issue to our 'needs attention' list
-#   hubot welcome - Shows welcome message
 #   hubot testing - Just a test change to see how things work
 
 module.exports = (robot) ->
