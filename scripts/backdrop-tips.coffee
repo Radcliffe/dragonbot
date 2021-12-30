@@ -4,11 +4,6 @@
 # These commands are supplements for other scripts as well
 #
 # Commands:
-#   hubot show needs attention - Show a list of issues that need your attention
-#   hubot attention - How to add an issue to 'needs attention' list
-#   hubot remove issue - Remove your 'needs attetion' issue
-#   hubot add issue [IssuePath] - Add an issue to our 'needs attention' list
-#   hubot testing - Just a test change to see how things work
 
 module.exports = (robot) ->
 
