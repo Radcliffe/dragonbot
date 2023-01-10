@@ -23,7 +23,7 @@
     "hubot-shipit": "^0.2.1",
     "hubot-zulip": "^0.1.0",
     "lodash": "^4.17.21",
-    "moment": "^2.24.0"
+    "moment": "^2.29.4"
   },
   "engines": {
     "node": "12.10.x"
