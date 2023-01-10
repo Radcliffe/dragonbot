@@ -22,7 +22,7 @@
     "hubot-schedule": "^0.7.0",
     "hubot-shipit": "^0.2.1",
     "hubot-zulip": "^0.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0"
   },
   "engines": {
